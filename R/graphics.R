@@ -85,6 +85,23 @@ node_profileplot <- function(mobobj, what = c("items", "thresholds", "discrimina
     }
     nmsi <- nms[[idn]]
 
+    if(is.list(border)) {
+        if(!all(names(border) %in% names(cf))) {warning("List 'border' is not named after the nodes")}
+        border <- border[[as.character(idn)]]
+    }
+    if(is.list(col)) {
+        if(!all(names(col) %in% names(cf))) {warning("List 'col' is not named after the nodes")}
+        col <- col[[as.character(idn)]]
+    }
+    if(is.list(cex)) {
+        if(!all(names(cex) %in% names(cf))) {warning("List 'cex' is not named after the nodes")}
+        cex <- cex[[as.character(idn)]]
+    }
+    if(is.list(pch)) {
+        if(!all(names(pch) %in% names(cf))) {warning("List 'pch' is not named after the nodes")}
+        pch <- pch[[as.character(idn)]]
+    }
+
     ## viewport setup
     top_vp <- viewport(layout = grid.layout(nrow = 2, ncol = 3,
                            widths = unit(c(ylines, 1, 1), c("lines", "null", "lines")),  
